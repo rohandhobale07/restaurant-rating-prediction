@@ -38,8 +38,9 @@ This project analyzes Zomato restaurant data using Python and Scikit-Learn to pr
 
 📁 Dataset
 
-- 🍽️ Zomato restaurant data (`Zomato_df.csv`)
-- 🔑 Business features: online ordering, table booking, pricing, location, votes
+- 🍽️ 23,248 Zomato restaurant records (`Zomato_df.csv`)
+- 🔑 8 modeling features: online ordering, table booking, votes, location, restaurant type, cuisines, cost, menu items
+- 🎯 Target: customer rating (out of 5)
 
 ⚙️ Approach
 
@@ -50,6 +51,16 @@ This project analyzes Zomato restaurant data using Python and Scikit-Learn to pr
 - Built a simple HTML/CSS front end so a user can input restaurant features and get a live predicted rating
 
 📈 Model Performance
+
+Trained and benchmarked 3 regression algorithms on a 70/30 train-test split (16,273 train / 6,975 test records):
+
+| Model | R² (Test Data) |
+|---|---|
+| Linear Regression | 0.228 |
+| Random Forest | 0.881 |
+| **Extra Trees** | **0.933** |
+
+Extra Trees was the clear winner — a large jump from Linear Regression's 0.228 shows the relationship between restaurant features and rating isn't linear, and tree-based ensembles capture it far better. The Extra Trees model was the one serialized (`model.pkl`) and deployed in the live Flask app.
 
 💡 Key Business Insights
 
@@ -66,6 +77,13 @@ This project analyzes Zomato restaurant data using Python and Scikit-Learn to pr
 
 🔧 Full Stack: Data cleaning → modeling → deployment → user interface
 
-📈 Model Performance:
+📊 Records Analyzed: 23,248
+
+🤖 Models Benchmarked: 3 (Linear Regression, Random Forest, Extra Trees)
+
+📈 Best R² (Test Data): 93.3% (Extra Trees)
+
+📉 R² Range: 22.8% – 93.3% across the 3 models
+
 
 
